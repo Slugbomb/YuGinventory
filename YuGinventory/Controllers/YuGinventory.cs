@@ -11,7 +11,6 @@ namespace YuGinventory.Controllers
 {
     public class YuGinventoryController : Microsoft.AspNetCore.Mvc.Controller
     {
-        //private readonly YuGinventoryContext _context;
 
         // GET: /<controller>/
         public IActionResult Index(string id)
@@ -21,8 +20,12 @@ namespace YuGinventory.Controllers
 
         public int SearchUserId(String nameSearchStr)
         {
-            var context = new YuGinventoryContext(); 
-            var u = GetUserForName(nameSearchStr);
+            var optionsBuilder = new DbContextOptionsBuilder<YuGinventoryContext>();
+            var context = new YuGinventoryContext(optionsBuilder.Options);
+
+            var userController = new UsersController(context);
+            var u = userController.GetUserForName(nameSearchStr);
+
             if (u != null)
             {
                 return u.ID;
