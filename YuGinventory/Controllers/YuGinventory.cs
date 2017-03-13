@@ -21,11 +21,8 @@ namespace YuGinventory.Controllers
 
         public int SearchUserId(String nameSearchStr)
         {
-            var httpContext = this.Request.HttpContext;
-            //var context = httpContext.GetOwinContext();
-            var uc = DependencyResolver.Current.GetService<UsersController>();
-            //uc.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext(this.Request.HttpContext);
-            var u = uc.GetUserForName(nameSearchStr);
+            var context = new YuGinventoryContext(); 
+            var u = GetUserForName(nameSearchStr);
             if (u != null)
             {
                 return u.ID;
