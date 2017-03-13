@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<p>Enter a user name to log in:</p>
+<form asp-controller="YuGinventory" asp-action="SearchUserId" method="get">
+    <p>
+        Name: <input type="Text" name="nameSearch">
+        <input type="submit" value="Login" />
+    </p>
+</form>
+<p>Or Enter a user name to create a user:</p>
+<form asp-controller="YuGinventory" asp-action="CreateUser" method="get">
+    <p>
+        User Name: <input type="Text" name="userName">
+        <input type="submit" value="Create User" />
+    </p>
+</form>
