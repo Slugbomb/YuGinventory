@@ -14,6 +14,11 @@ namespace YuGinventory.Models
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=YuGinventoryContext-306a00bf-6637-47d0-9e01-a22dbef66606;Trusted_Connection=True;MultipleActiveResultSets=true");
+        }
+
         public DbSet<YuGinventory.Models.User> User { get; set; }
 
         public DbSet<YuGinventory.Models.Deck> Deck { get; set; }
